@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Contact } from './contact-list/contact.model';
+import { Contact } from './contact.model';
 
 
 @Component({
@@ -8,11 +8,11 @@ import { Contact } from './contact-list/contact.model';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactComponent implements OnInit {
-  selectedContact: Contact;
+    selectedContact: Contact;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
+    ngOnInit() {
   }
 
 }

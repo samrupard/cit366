@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Contact } from '../contact-list/contact.model';
+import { Contact } from '../contact.model';
 
 
 @Component({
