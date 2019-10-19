@@ -8,7 +8,7 @@ import { ContactService } from '../contact.service';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
-  
+
   contact: Contact[] = [];
 
   constructor(private contactService: ContactService) {
@@ -19,6 +19,6 @@ export class ContactListComponent implements OnInit {
   }
 
   onSelected(contact: Contact) {
-    this.contactService.contactSelectedEvent.emit(contact); // Contact[] or Contact?
+    this.contactService.contactSelectedEvent.emit(contact);
   }
 }
