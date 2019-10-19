@@ -16,6 +16,8 @@ import { MessageItemComponent } from './messages/message-item/message-item.compo
 import { MessageListComponent } from './messages/message-list/message-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ContactService } from './contacts/contact.service';
+import { DocumentService } from './documents/documents.service';
+import { MessageService } from './messages/messages.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { ContactService } from './contacts/contact.service';
   imports: [
     BrowserModule
   ],
-  providers: [ContactService],
+  providers: [ContactService, DocumentService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

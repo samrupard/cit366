@@ -93,9 +93,9 @@ export const MOCKDOCUMENTS: any[] = [
         'url': 'https://content.byui.edu/file/2c4ddd6c-dce4-408d-b581-f254a13e4d10/1/Lesson4Introduction.pdf'
       },
       {
-        'id': '25',
-        'name': 'Lesson 5 - Angular 2 Framework 3',
-        'url': 'https://content.byui.edu/file/66dc0765-22a7-4cd8-a184-942c607636fb/1/Lesson5Introduction.pdf'
+        id: '25',
+        name: 'Lesson 5 - Angular 2 Framework 3',
+        url: 'https://content.byui.edu/file/66dc0765-22a7-4cd8-a184-942c607636fb/1/Lesson5Introduction.pdf'
       }
     ]
   },

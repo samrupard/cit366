@@ -8,18 +8,17 @@ import { ContactService } from '../contact.service';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
-
+  
   contact: Contact[] = [];
 
   constructor(private contactService: ContactService) {
-    
-  }
-
-  ngOnInit() {
     this.contact = this.contactService.getContacts();
   }
 
+  ngOnInit() {
+  }
+
   onSelected(contact: Contact) {
-    this.contactService.contactSelectedEvent.emit(contact);
+    this.contactService.contactSelectedEvent.emit(contact); // Contact[] or Contact?
   }
 }

@@ -1,13 +1,13 @@
 export class Contact {
-    contactId: string;
+    id: string;
     name: string;
     phone: string;
     email: string;
     imageUrl: string;
     group: Contact[];
 
-    constructor (contactId: string, name: string, phone: string, email: string, imageUrl: string, group: Contact[]) {
-        this.contactId = contactId;
+    constructor (id: string, name: string, phone: string, email: string, imageUrl: string, group: Contact[]) {
+        this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;

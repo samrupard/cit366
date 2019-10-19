@@ -4,7 +4,7 @@ import { MOCKCONTACTS } from './MOCKCONTACTS';
 
 @Injectable()
 export class ContactService {
-  contactSelectedEvent = new EventEmitter<Contact>(); 
+  contactSelectedEvent = new EventEmitter<Contact>();
   contacts: Contact[] = [];
 
   constructor() {
@@ -15,9 +15,9 @@ export class ContactService {
     return this.contacts.slice();
   }
 
-  getContact(contactId: string): Contact {
-    for (let contact of this.contacts) {
-      if (contact.contactId === contactId) {
+  getContact(id: string): Contact {
+    for (const contact of this.contacts) {
+      if (contact.id === id) {
         return contact;
       }
     }
