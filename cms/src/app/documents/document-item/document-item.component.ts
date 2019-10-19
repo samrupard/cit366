@@ -8,8 +8,8 @@ import { DocumentService } from '../documents.service';
   styleUrls: ['./document-item.component.css']
 })
 export class DocumentItemComponent implements OnInit {
-@Input() document: Document;
-@Output() documentSelected = new EventEmitter<void>();
+  @Input() document: Document;
+  @Output() documentSelected = new EventEmitter<void>();
   constructor(private documentService: DocumentService) { }
 
   ngOnInit() {

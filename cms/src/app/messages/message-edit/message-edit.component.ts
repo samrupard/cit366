@@ -8,8 +8,8 @@ import { Message } from '../message.model';
 })
 export class MessageEditComponent implements OnInit {
   public currentSender = 'Sam';
-  @ViewChild('subjectInput', {static: false}) subjectInputRef: ElementRef;
-  @ViewChild('msgTextInput', {static: false}) msgInputRef: ElementRef;
+  @ViewChild('subjectInput', { static: false }) subjectInputRef: ElementRef;
+  @ViewChild('msgTextInput', { static: false }) msgInputRef: ElementRef;
   @Output() addMessageEvent = new EventEmitter<Message>();
 
   constructor() { }
@@ -19,11 +19,12 @@ export class MessageEditComponent implements OnInit {
   onSendMessage() {
     const msgSubject = this.subjectInputRef.nativeElement.value;
     const msg = this.msgInputRef.nativeElement.value;
-    const newMessage = new Message( '1', msgSubject, msg, this.currentSender);
+    const newMessage = new Message('1', msgSubject, msg, this.currentSender);
     this.addMessageEvent.emit(newMessage);
   }
 
   onClear() {
     this.subjectInputRef.nativeElement.value = '';
     this.msgInputRef.nativeElement.value = '';
-  }}
+  }
+}

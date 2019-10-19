@@ -1,14 +1,12 @@
 <div class="panel-group">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <a href="#" class="btn btn-success pull-right" type="button">New Contact</a>
-        <h4><strong>Contacts</strong></h4>
-      </div>
-      <div class="panel-body">
-        <cms-contact-item
-          *ngFor="let contactEl of contact"
-          [contact]="contactEl"
-          (contactSelected)="onSelected(contactEl)"></cms-contact-item>
-      </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a href="#" class="btn btn-success pull-right" type="button">New Contact</a>
+      <h4><strong>Contacts</strong></h4>
+    </div>
+    <div class="panel-body">
+      <cms-contact-item *ngFor="let contactEl of contact" [contact]="contactEl"
+        (contactSelected)="onSelected(contactEl)"></cms-contact-item>
     </div>
   </div>
+</div>

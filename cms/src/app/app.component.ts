@@ -11,6 +11,6 @@ export class AppComponent {
   switchView(feature: string) {
     this.loadedFeature = feature;
   }
-  
+
   title = 'cms';
 }

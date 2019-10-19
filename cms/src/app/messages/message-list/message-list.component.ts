@@ -15,7 +15,7 @@ export class MessageListComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
 
   onAddMessage(message: Message) {
