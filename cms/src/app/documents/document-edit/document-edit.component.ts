@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Document } from '../document.model';
 import { DocumentService } from '../documents.service';
@@ -14,6 +14,7 @@ export class DocumentEditComponent implements OnInit {
   originalDocument: Document;
   document: Document;
   editMode = false;
+  id: string;
 
   constructor(private documentService: DocumentService,
               private router: Router,
@@ -23,12 +24,12 @@ export class DocumentEditComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          const id = params['id'];
-          if (id === null || id === undefined) {
+          this.id = params['id'];
+          if (this.id === null || this.id === undefined) {
             this.editMode = false;
             return;
           }
-          this.originalDocument = this.documentService.getDocument(id);
+          this.originalDocument = this.documentService.getDocument(this.id);
           if (this.originalDocument === undefined || this.originalDocument === null) {
             this.editMode = false;
             return;
@@ -40,7 +41,7 @@ export class DocumentEditComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const value = form.value;
-    const newDocument = new Document('', value.name, value.description, value.documentUrl, null);
+    const newDocument = new Document(value.id, value.name, value.description, value.documentUrl, null);
     if (this.editMode === true) {
       this.documentService.updateDocument(this.originalDocument, newDocument);
     } else {

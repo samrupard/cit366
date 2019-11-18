@@ -16,9 +16,11 @@ export class DocumentListComponent implements OnInit, OnDestroy {
   constructor(private documentService: DocumentService,
               private router: Router,
               private route: ActivatedRoute) {
-    this.document = this.documentService.getDocuments();
+   this.documentService.getDocuments();
   }
+
   ngOnInit() {
+    this.documentService.getDocuments();
     this.subscription = this.documentService.documentListChangedEvent
       .subscribe(
         (documentsList: Document[]) => {
@@ -26,9 +28,11 @@ export class DocumentListComponent implements OnInit, OnDestroy {
         }
       );
   }
+
   onNewDocument() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

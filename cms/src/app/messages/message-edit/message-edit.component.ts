@@ -7,7 +7,7 @@ import { Message } from '../message.model';
   styleUrls: ['./message-edit.component.css']
 })
 export class MessageEditComponent implements OnInit {
-  public currentSender = 'Sam';
+  public currentSender = '19';
   @ViewChild('subjectInput', { static: false }) subjectInputRef: ElementRef;
   @ViewChild('msgTextInput', { static: false }) msgInputRef: ElementRef;
   @Output() addMessageEvent = new EventEmitter<Message>();
