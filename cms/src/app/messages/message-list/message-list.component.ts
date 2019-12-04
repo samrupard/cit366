@@ -18,22 +18,22 @@ export class MessageListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.messageService.messageChangeEvent
-    .subscribe(
-      (messages: Message[]) => {
+        this.subscription = this.messageService.messageChangeEvent
+         .subscribe(
+         (messages: Message[]) => {
         this.messages = messages;
       });
   }
 
   onAddMessage(message: Message) {
-    this.messages.push(message);
+       this.messages.push(message);
   }
 
   onSelectedMessage(message: Message[]) {
-    this.messageService.messageChangeEvent.next(message);
+        this.messageService.messageChangeEvent.next(message);
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+        this.subscription.unsubscribe();
   }
 }

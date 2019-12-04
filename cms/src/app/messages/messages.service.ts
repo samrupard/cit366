@@ -12,8 +12,8 @@ export class MessageService {
     maxMessageId: number;
 
     constructor(private http: HttpClient) {
-        // this.messages = MOCKMESSAGES;
-        this.maxMessageId = this.getMaxId();
+        
+         this.maxMessageId = this.getMaxId();
     }
 
     storeMessages() {
@@ -55,9 +55,9 @@ export class MessageService {
         }
 
         this.maxMessageId++;
-        newMessage.id = String(this.maxMessageId);
-        this.messages.push(newMessage);
-        // this.messageChangeEvent.emit(this.messages.slice());
+           newMessage.id = String(this.maxMessageId);
+          this.messages.push(newMessage);
+        
         this.storeMessages();
       }
 

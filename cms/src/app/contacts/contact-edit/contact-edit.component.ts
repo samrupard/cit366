@@ -91,7 +91,7 @@ export class ContactEditComponent implements OnInit {
   }
 
   onRemoveItem(idx: number) {
-    // If contact is outside the bounds of the array
+    
     if (idx < 0 || idx >= this.groupContacts.length) {
       return;
     }

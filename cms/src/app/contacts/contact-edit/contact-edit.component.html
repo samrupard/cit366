@@ -19,17 +19,17 @@
           <label for="email">Email</label>
           <input
             type="text"
-            id="email"
-            class="form-control required"
-            size="120"
-            max="255"
-            name="email"
-            email
-            [ngModel]="contact?.email"
-            #email="ngModel"
-            required
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-            <span class="help-block" *ngIf="!email.valid && email.dirty">Please enter a valid email!</span>
+              id="email"
+              class="form-control required"
+              size="120"
+                max="255"
+                name="email"
+                email
+              [ngModel]="contact?.email"
+               #email="ngModel"
+              required
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+            <span class="help-block" *ngIf="!email.valid && email.dirty">Please enter a valid email</span>
           </div>
 
         <div class="col-sm-12 form-group">
@@ -44,7 +44,7 @@
             [ngModel]="contact?.phone"
             #phone="ngModel"
             pattern="\D*([2-9]\d{2})(\D*)([2-9]\d{2})(\D*)(\d{4})\D*">
-            <span class="help-block" *ngIf="phone.dirty && !phone.valid">Please enter a valid Phone Number!</span>
+            <span class="help-block" *ngIf="phone.dirty && !phone.valid">Please enter a valid Phone Number</span>
         </div>
 
         <div class="col-sm-12 form-group">

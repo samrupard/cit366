@@ -7,20 +7,19 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 @Injectable()
 export class DocumentService {
   documentSelectedEvent = new EventEmitter<Document[]>();
-  // documentChangedEvent = new Subject<Document[]>();
-  documentListChangedEvent = new Subject<Document[]>();
-  documents: Document[] = [];
+  
+   documentListChangedEvent = new Subject<Document[]>();
+    documents: Document[] = [];
   maxDocumentId: number;
 
   constructor(private http: HttpClient) {
-    // this.documents = MOCKDOCUMENTS;
-    this.maxDocumentId = this.getMaxId();
+   this.maxDocumentId = this.getMaxId();
   }
 
   storeDocments() {
     this.documents = JSON.parse(JSON.stringify(this.documents));
-    const header = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.put('https://samrupard-cms.firebaseio.com/documents.json', this.documents, { headers: header})
+      const header = new HttpHeaders({'Content-Type': 'application/json'});
+      return this.http.put('https://samrupard-cms.firebaseio.com/documents.json', this.documents, { headers: header})
       .subscribe(
         (documents: Document[]) => {
           this.documentListChangedEvent.next(this.documents.slice());
@@ -33,8 +32,8 @@ export class DocumentService {
       .subscribe(
         (documents: Document[]) => {
           this.documents = documents;
-          this.documents.sort((a, b) => (a['name'] < b['name']) ? 1 : (a['name'] > b['name']) ? -1 : 0);
-          this.documentListChangedEvent.next(this.documents.slice());
+            this.documents.sort((a, b) => (a['name'] < b['name']) ? 1 : (a['name'] > b['name']) ? -1 : 0);
+            this.documentListChangedEvent.next(this.documents.slice());
         }, (error: any) => {
           console.log('something bad happened...');
         }
@@ -54,22 +53,21 @@ export class DocumentService {
     if (document === null || document === undefined) {
       return;
     }
-    const pos = this.documents.indexOf(document);
-    if (pos < 0) {
+      const pos = this.documents.indexOf(document);
+         if (pos < 0) {
       return;
     }
 
     this.documents.splice(pos, 1);
-    // const documentsListClone = this.documents.slice();
-    // this.documentListChangedEvent.next(documentsListClone);
+    
     this.storeDocments();
   }
 
   getMaxId(): number {
     let maxId = 0;
-    for (const document of this.documents) {
+      for (const document of this.documents) {
       const currentId = parseInt(document.id, 10);
-      if (currentId > maxId) {
+        if (currentId > maxId) {
         maxId = currentId;
       }
     }
@@ -81,18 +79,17 @@ export class DocumentService {
       return;
     }
 
-    this.maxDocumentId++;
+           this.maxDocumentId++;
     newDocument.id = String(this.maxDocumentId);
-    this.documents.push(newDocument);
-    // const documentsListClone = this.documents.slice();
-    // this.documentListChangedEvent.next(documentsListClone);
+     this.documents.push(newDocument);
+    
     this.storeDocments();
   }
 
   updateDocument (originalDocument: Document,
                   newDocument: Document) {
     if (originalDocument === null || newDocument === null
-      || originalDocument === undefined || newDocument === undefined) {
+          || originalDocument === undefined || newDocument === undefined) {
       return;
     }
 
@@ -103,9 +100,10 @@ export class DocumentService {
     }
 
     this.documents[pos] = newDocument;
-    // const documentsListClone = this.documents.slice();
-    // this.documentListChangedEvent.next(documentsListClone);
-    this.storeDocments();
+   
+
+
+        this.storeDocments();
   }
 
 }
