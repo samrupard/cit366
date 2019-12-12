@@ -4,7 +4,9 @@ import { MOCKCONTACTS } from './MOCKCONTACTS';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ContactService {
   contactSelectedEvent = new EventEmitter<Contact[]>();
   // contactChangedEvent = new Subject<Contact[]>();

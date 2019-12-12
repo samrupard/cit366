@@ -5,7 +5,9 @@ import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MessageService {
     messageChangeEvent = new Subject<Message[]>();
     messages: Message[] = [];

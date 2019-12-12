@@ -58,7 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, DndModule.forRoot(), HttpClientModule
   ],
-  providers: [ContactService, DocumentService, MessageService, WindRefService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

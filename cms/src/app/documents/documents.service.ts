@@ -3,8 +3,11 @@ import { Document } from './document.model';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { stringify } from '@angular/compiler/src/util';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DocumentService {
   documentSelectedEvent = new EventEmitter<Document[]>();
   
@@ -14,6 +17,11 @@ export class DocumentService {
 
   constructor(private http: HttpClient) {
    this.maxDocumentId = this.getMaxId();
+  }
+
+  sortAndSend() {
+    this.documents.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    this.documentListChangedEvent.next(this.documents.slice());
   }
 
   storeDocments() {
@@ -28,13 +36,15 @@ export class DocumentService {
   }
 
   getDocuments() {
-    this.http.get('https://samrupard-cms.firebaseio.com/documents.json')
+    this.http.get<{ message: string, documents: Document[]}>
+    ('http://localhost:3000/documents')
       .subscribe(
-        (documents: Document[]) => {
-          this.documents = documents;
-            this.documents.sort((a, b) => (a['name'] < b['name']) ? 1 : (a['name'] > b['name']) ? -1 : 0);
-            this.documentListChangedEvent.next(this.documents.slice());
-        }, (error: any) => {
+        (documentData) => {
+          this.documents = documentData.documents;
+          this.sortAndSend();
+
+        },
+         (error: any) => {
           console.log('something bad happened...');
         }
       );
@@ -48,6 +58,7 @@ export class DocumentService {
     }
     return null;
   }
+  
 
   deleteDocument(document: Document) {
     if (document === null || document === undefined) {
@@ -78,6 +89,26 @@ export class DocumentService {
     if (newDocument === null) {
       return;
     }
+
+    newDocument.id = '';
+
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    
+    //add to db
+    this.http.post<{ message: string, document: Document }>
+    ('http://localhost:3000/documents',
+    document, 
+    { headers: headers })
+    .subscribe(
+      (responseData) => {
+        this.documents.push(responseData.document);
+        this.sortAndSend();
+      },
+        (error: any) => {
+          console.log(error);
+        }
+    );
+   
 
            this.maxDocumentId++;
     newDocument.id = String(this.maxDocumentId);
