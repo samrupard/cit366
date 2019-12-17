@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/src/app/app.component.css">
 <div class="container">   
 <form> <div class="form-group">
     <h1 class="text-center text-primary">Hockey-Talk</h1>
@@ -6,7 +7,6 @@
     <input [(ngModel)]="n" type="text" name="n" placeholder="Your Name"><br><br>
     <textarea [(ngModel)]="m" name="m" placeholder="Your Message"></textarea><br><br>
     <input (click)="post()" type="button" value="Send"><br><br>
-    <input (click)="delete()" type="button" value="Delete">
     </div>
 </div>
 </div>
@@ -16,9 +16,9 @@
 </div>
 
     <h3>Messages</h3>
-    <div *ngFor="let m of messages">{{m.name}} says: {{m.msg}}<br>
-        <input (click)="delete()" type="button" value="Edit"><br><br>
-        <input (click)="delete()" type="button" value="Delete">
+    <div *ngFor="let m of messages" class="messages1">{{m.name}} says: {{m.msg}} & {{m._id.toString()}}<br>
+        <input (click)="edit()" type="button" value="Edit"><br><br>
+        <input id={{m._id.toString()}} (click)="delete()" type="button" value="Delete"> 
         <hr>
        
     </div>

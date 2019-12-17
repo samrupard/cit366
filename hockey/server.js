@@ -31,3 +31,9 @@ app.get("/send", async (req, res)=>{
     if(!dbInfo) return res.json({error: "Error getting messages"});
     res.json(dbInfo);
 })
+
+app.delete("/delete", async (req, res)=>{
+    const dbInfo = await db.collection("messages").find({}).toArray();
+    if(!dbInfo) return res.json({error: "Error getting messages"});
+    res.json(dbInfo);
+})
